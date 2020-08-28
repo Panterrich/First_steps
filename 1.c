@@ -20,9 +20,7 @@ void quadratic_equation(double a, double b, double c)
 	}
 	else {
 
-		double discriminant;
-
-		discriminant=b*b-4*a*c;
+		double discriminant=b*b-4*a*c;
 
 		if (! isZero(discriminant) && (discriminant > 0) ) {
 			printf("x1=%lg\n x2=%lg\n", (-b-sqrt(discriminant))/(2*a), (-b+sqrt(discriminant))/(2*a) );
