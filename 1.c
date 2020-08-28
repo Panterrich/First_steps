@@ -5,7 +5,7 @@ const double deviation=1E-6;
 
 int isZero(double discr)
 {
-	if (fabs(discr)<=deviation) {
+	if (fabs(discr) <= deviation) {
 		return 1;
 	}
 	else {
@@ -15,19 +15,19 @@ int isZero(double discr)
 
 void quadratic_equation(double a, double b, double c)
 {
-	if (a=0){
-		printf("%lg", -c/b );
+	if (a = 0){
+		printf("%lg", -c / b );
 	}
 	else {
 
-		double discriminant=b*b-4*a*c;
+		double discriminant=b * b - 4 * a * c;
 
 		if (! isZero(discriminant) && (discriminant > 0) ) {
-			printf("x1=%lg\n x2=%lg\n", (-b-sqrt(discriminant))/(2*a), (-b+sqrt(discriminant))/(2*a) );
+			printf("x1=%lg\n x2=%lg\n", (- b - sqrt(discriminant)) / (2 * a), (- b + sqrt(discriminant)) / (2 * a) );
 		}
 		else {
 			if (isZero(discriminant)) {
-				printf("x=%lg\n", -b/(2*a));
+				printf("x=%lg\n", - b / (2 * a));
 			}
 			else {
 				printf("Не имеет решений");
