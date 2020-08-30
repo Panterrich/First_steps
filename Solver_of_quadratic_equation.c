@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-const double deviation=1E-6;
+const double deviation = 1E-6;
 
 //================================================================
 
@@ -39,7 +39,7 @@ void quadratic_equation(double a, double b, double c)
 	else 
 		{
 
-		double discriminant=b * b - 4 * a * c;
+		double discriminant = b * b - 4 * a * c;
 
 		if (!is_zero(discriminant) && (discriminant > 0) ) 
 			{
@@ -53,6 +53,5 @@ void quadratic_equation(double a, double b, double c)
 			{
 			printf("Не имеет решений\n");
 			}
-			
 		}
  	}
