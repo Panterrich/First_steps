@@ -44,9 +44,11 @@ void quadratic_equation(double a, double b, double c)
 		{
 			if (((- b / a) > 0) && !is_zero(- b / a))
 			printf("This equation has 2 roots:\nx1=0\nx2=%lg\n", - b / a);
+
 			if (((- b / a) < 0) && !is_zero(- b / a))
 			printf("This equation has 2 roots:\nx1=%lg\nx2=0\n", - b / a);
-			if (is_zero(- b / a))
+
+			if (is_zero(- b / a))	
 			printf("This equation has 1 root:\nx=0\n");
 		}
 	else
@@ -56,7 +58,7 @@ void quadratic_equation(double a, double b, double c)
 
 		if (!is_zero(discriminant) && (discriminant > 0) ) 
 			{
-			printf("This eqeation has 2 roots:\nx1=%lg\nx2=%lg\n", (- b - sqrt(discriminant)) / (2 * a), (- b + sqrt(discriminant)) / (2 * a) );
+			printf("This equation has 2 roots:\nx1=%lg\nx2=%lg\n", (- b - sqrt(discriminant)) / (2 * a), (- b + sqrt(discriminant)) / (2 * a) );
 			}
 		else if (is_zero(discriminant)) 
 			{
