@@ -25,33 +25,46 @@ void main()
 
 //================================================================
 
-int is_zero(double discr)
+int is_zero(double value)
 	{
-	return (fabs(discr) <= deviation);
+	return (fabs(value) <= deviation);
 	}
 	
 void quadratic_equation(double a, double b, double c)
 	{
-	if (is_zero(a))
+	if (is_zero(a) && is_zero(b) && is_zero(c))
 		{
-		printf("x=%lg\n", -c / b );
+		printf("This equation has an infinite number of roots\n");
 		}
-	else 
+	else if (is_zero(a) && !is_zero(b) && is_zero(c) || !is_zero(a) && is_zero(b) && is_zero(c))
+		{
+		printf("This equation has 1 root:\nx=0\n");
+		}
+	else if (!is_zero(a) && !is_zero(b) && is_zero(c))
+		{
+			if (((- b / a) > 0) && !is_zero(- b / a))
+			printf("This equation has 2 roots:\nx1=0\nx2=%lg\n", - b / a);
+			if (((- b / a) < 0) && !is_zero(- b / a))
+			printf("This equation has 2 roots:\nx1=%lg\nx2=0\n", - b / a);
+			if (is_zero(- b / a))
+			printf("This equation has 1 root:\nx=0\n");
+		}
+	else
 		{
 
 		double discriminant = b * b - 4 * a * c;
 
 		if (!is_zero(discriminant) && (discriminant > 0) ) 
 			{
-			printf("x1=%lg\n x2=%lg\n", (- b - sqrt(discriminant)) / (2 * a), (- b + sqrt(discriminant)) / (2 * a) );
+			printf("This eqeation has 2 roots:\nx1=%lg\nx2=%lg\n", (- b - sqrt(discriminant)) / (2 * a), (- b + sqrt(discriminant)) / (2 * a) );
 			}
 		else if (is_zero(discriminant)) 
 			{
-			printf("x=%lg\n", - b / (2 * a));
+			printf("This equation has 1 root:\nx=%lg\n", - b / (2 * a));
 			}
 		else 
 			{
-			printf("Не имеет решений\n");
+			printf("This equation hasn't roots\n");
 			}
 		}
  	}
