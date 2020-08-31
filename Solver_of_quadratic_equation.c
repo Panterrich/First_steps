@@ -15,14 +15,19 @@ void output(int roots, double* x_1, double* x_2);
 
 //================================================================
 
-void main()
+int main()
 	{
-	printf("Enter the coefficients a, b, c quadratic equation in a row separated by a space\nEquation of the form a*x^2+b*x+c=0\n\n");
+	printf("Enter the real coefficients a, b, c quadratic equation in a row separated by a space\nEquation of the form a*x^2+b*x+c=0\n\n");
 
 	double a = 0, b = 0, c = 0, x1 = 0, x2 = 0;
 	int roots = 0;
 
-	scanf("%lg %lg %lg", &a, &b, &c);
+	if (scanf("%lg %lg %lg", &a, &b, &c) != 3)
+		{
+		printf("\n\nError, you entered the wrong coefficients!\n\n");
+		return 0;
+		}
+
 	printf("\n\n");
 
 	roots = quadratic_equation(a, b, c, &x1, &x2);
