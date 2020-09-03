@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <math.h>
+#include <assert.h>
 
 #define ZERO 0 
+#define NUMBER_OF_TESTS 15
+
+#define DEBUG_MODE
 
 const double deviation = 1E-6;
 
@@ -39,13 +43,23 @@ int is_number(double value, double number)
 	
 int quadratic_equation(double a, double b, double c, double* x_1, double* x_2)
 	{
+		//assert(x_1 != NULL);
 	if (is_number(a, ZERO) && is_number(b, ZERO) && is_number(c, ZERO))
 		{
 		return -1;
 		}
-	else if (is_number(a, ZERO) && !is_number(b, ZERO) && is_number(c, ZERO) || !is_number(a, ZERO) && is_number(b, ZERO) && is_number(c, ZERO))
+	else if (is_number(a, ZERO) && is_number(b, ZERO) && !is_number(c, ZERO))
+		{
+		return 0;
+		}
+	else if ((is_number(a, ZERO) && !is_number(b, ZERO) && is_number(c, ZERO)) || (!is_number(a, ZERO) && is_number(b, ZERO) && is_number(c, ZERO)))
 		{
 		*x_1 = 0;
+		return 1;
+		}
+	else if (is_number(a, ZERO) && !is_number(b, ZERO) && !is_number(c, ZERO))
+		{
+		*x_1 = -c / b;
 		return 1;
 		}
 	else if (!is_number(a, ZERO) && !is_number(b, ZERO) && is_number(c, ZERO))
@@ -143,10 +157,11 @@ int unit_test()
 		FILE* output;
 
 		input = fopen("input.txt", "r");
+		//assert(input != NULL);
 
 		if (input == NULL)
 			{
-				printf("This file is empty!");
+				fprintf(stderr, "This file is empty!");
 				return 1;
 			}
 
@@ -155,11 +170,11 @@ int unit_test()
 		double a = 0, b = 0, c = 0;
 		int i = 0;
 
-		for (i=0; i<100; i++)
+		for (i = 0; i < NUMBER_OF_TESTS; i++)
 			{
 
 			double x1 = 0, x2 = 0;
-			int roots =0;
+			int roots = 0;
 
 			fscanf(input, "%lg %lg %lg", &a, &b, &c);
 
