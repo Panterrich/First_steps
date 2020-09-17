@@ -2,27 +2,56 @@
 #include <math.h>
 #include <assert.h>
 
-#define ZERO 0 
-#define NUMBER_OF_TESTS 15
-
 #define DEBUG_MODE
 
 const double deviation = 1E-6;
+const int ZERO = 0; 
+const int NUMBER_OF_TESTS = 15;
+
+/// \file
 
 //================================================================
-
+/*!
+Checks whether number is value with an accuracy of 1E-6
+\param[in] value value - the number to compare with original number
+\param[in] number number - original number 
+*/
 int is_number(double value, double number);
 
+/*!
+Solves a square equation ax^2 + bx + c = 0
+\param[in]  a a - coefficient
+\param[in]  b b - coefficient
+\param[in]  c c - coefficient
+\param[out] x_1 pointer to the first  root x1
+\param[out] x_2 pointer to the second root x2
+\return Number of roots
+\note In case of infinite number of roots, returns -1
+*/
 int quadratic_equation(double a, double b, double c, double* x_1, double* x_2);
 
+/*!
+Print the answer in the terminal 
+\param[in]  roots roots - number of roots
+\param[out] x_1 pointer to the first  root x1
+\param[out] x_2 pointer to the second root x2
+*/
 void output(int roots, double* x_1, double* x_2);
 
+/*!
+Unit tests input from input.txt and output in output.txt
+*/
 int unit_test();
-
+/*!
+Solves one equation in the terminal 
+*/
 int manual_test();
 
 //================================================================
 
+/*!
+main()
+*/
 int main()
 	{
 	#ifdef DEBUG_MODE
@@ -36,14 +65,14 @@ int main()
 
 int is_number(double value, double number)
 	{
-	return (fabs(value-number) <= deviation);
+	return (fabs(value - number) <= deviation);
 	}
 
 //================================================================
 	
 int quadratic_equation(double a, double b, double c, double* x_1, double* x_2)
 	{
-		//assert(x_1 != NULL);
+	/// Special case of quadratic equation 
 	if (is_number(a, ZERO) && is_number(b, ZERO) && is_number(c, ZERO))
 		{
 		return -1;
@@ -82,15 +111,15 @@ int quadratic_equation(double a, double b, double c, double* x_1, double* x_2)
 				return 1;
 				}
 		}
-	else
+	else /// Standard solution of quadratic equation 
 		{
 
 		double discriminant = b * b - 4 * a * c;
 
 		if (!is_number(discriminant, ZERO) && (discriminant > ZERO) ) 
 			{
-			*x_1=(-b - sqrt(discriminant)) / (2 * a);
-			*x_2=(-b + sqrt(discriminant)) / (2 * a);
+			*x_1 = (-b - sqrt(discriminant)) / (2 * a);
+			*x_2 = (-b + sqrt(discriminant)) / (2 * a);
 			return 2;
 			}
 		else if (is_number(discriminant, ZERO)) 
@@ -185,7 +214,7 @@ int unit_test()
 					case 0: fprintf(output, "No roots\n"); break;
 					case 1: fprintf(output, "%lg\n", x1); break;
 					case 2: fprintf(output, "%lg %lg\n", x1, x2); break;
-					case -1: fprintf(output, "infinite\n");
+					case -1: fprintf(output, "infinite\n"); break;
 				}
 			}
 		printf("All tests are done\n");
