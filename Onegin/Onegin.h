@@ -14,7 +14,7 @@ long int size_file(FILE* file); //возвращает размер файла �
 
 char* create_buffer(FILE* file, long int* n_lines, long int* size); //Создаём буфер и считаем количество строк в нём
 
-struct string* copy_text(char* buffer, const long int n_lines); //Скопировали в буфер(структуру массив) из файла
+struct string* placing_pointers_in_text(char* buffer, const long int n_lines); //Скопировали в буфер(структуру массив) из файла
 
 int comparator_direct(const void* left, const void* right); //Компаратор по началу строки
 
