@@ -9,7 +9,6 @@ Compile program:
 1) In terminal:
 
         g++ Onegin.cpp main.c -o app
-    
         ./app "Name_of_file"   
   
 Example: 
