@@ -8,7 +8,17 @@ struct string
     int len; 
 };
 
+struct text
+{
+    char* buffer;
+    struct string* lines;
+    long int n_lines;
+    long int size;
+};
+
 //==============================================================================================
+
+struct text create_text(FILE* file); //Заполняем структуру текста
 
 long int size_file(FILE* file); //возвращает размер файла для динамической памяти буфера
 
@@ -20,7 +30,7 @@ int comparator_direct(const void* left, const void* right); //Компарато
 
 int comparator_reverse(const void* left, const void* right); //Компаратор по концу строки
 
-void print_text(FILE* file, struct string* strings, char* buffer, const long int n_lines); //Печать массива техта в файл
+void print_text(FILE* file, struct string* strings, const long int n_lines); //Печать массива техта в файл
 
 void print_buffer(FILE* file, char* buffer, const long int size); // Печать основного текста
 

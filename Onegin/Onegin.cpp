@@ -13,7 +13,19 @@ const int New_line = '\n';
 
 //==============================================================================================
 
-long int size_file(FILE* file) 
+struct text create_text(FILE* file)
+{
+    assert(file != NULL);
+
+    struct text input_text = {};
+
+    input_text.buffer = create_buffer(file, &input_text.n_lines, &input_text.size);
+    input_text.lines = placing_pointers_in_text(input_text.buffer, input_text.n_lines);
+
+    return input_text;
+}
+
+long int size_file(FILE* file)
 {
     assert(file != NULL);
 
@@ -27,22 +39,27 @@ char* create_buffer(FILE* file, long int* n_lines, long int* size)
 {
     assert(file != NULL);
     assert(n_lines != NULL);
+    assert(size != NULL);
 
     *size = size_file(file);
 
     char* buffer = (char*) calloc(*size, sizeof(char));
 
     fseek(file, 0, SEEK_SET);
-    fread((char*) buffer, sizeof(char), *size, file);
+    fread(buffer, sizeof(char), *size, file);
 
     char* begin_line = buffer;
-    char* end_line;
+    char* end_line = buffer;
+
+    long int count = 0;
 
     while ((end_line = strchr(begin_line, New_line)) != NULL)
     {
         begin_line = end_line + 1;
-        (*n_lines)++;
+        count++;
     }
+
+    *n_lines = count;
 
     return buffer;
 }
@@ -76,15 +93,15 @@ void print_buffer(FILE* file, char* buffer, const long int size)
 {
     assert(file != NULL);
     assert(buffer != NULL);
+    assert(size != 0);
 
     fwrite(buffer, sizeof(char), size, file);
 }
 
-void print_text(FILE* file, struct string* strings, char* buffer, const long int n_lines)
+void print_text(FILE* file, struct string* strings, const long int n_lines)
 {
     assert(file != NULL);
     assert(strings != NULL);
-    assert(buffer != NULL);
     assert(n_lines != 0);
 
     for (int index_strings = 0; index_strings < n_lines; index_strings++)
@@ -96,13 +113,13 @@ void print_text(FILE* file, struct string* strings, char* buffer, const long int
 
 int comparator_direct(const void* left, const void* right) 
 {
-    char* left_begin  = (((struct string*)left) ->str);
-    char* left_end    = (((struct string*)left) ->str) + (((struct string*)left) ->len);
-    char* right_begin = (((struct string*)right)->str);
-    char* right_end   = (((struct string*)right)->str) + (((struct string*)right)->len);
+    char* left_begin  = (((struct string*) left) ->str);
+    char* left_end    = (((struct string*) left) ->str) + (((struct string*)left) ->len);
+    char* right_begin = (((struct string*) right)->str);
+    char* right_end   = (((struct string*) right)->str) + (((struct string*)right)->len);
 
     while ((!isalpha(*left_begin))  && (left_begin  != left_end))   ++left_begin;
-    while ((!isalpha(*right_begin)) && (right_begin != right_end)) ++right_begin;
+    while ((!isalpha(*right_begin)) && (right_begin != right_end))  ++right_begin;
 
     while ((*left_begin == *right_begin) && (left_begin != left_end) && (right_begin != right_end))
     {  
@@ -117,26 +134,29 @@ int comparator_direct(const void* left, const void* right)
     {
         return 0;
     }
+
     else if (left_begin == left_end)
     {
         return -1;
     }
+
     else if (right_begin == right_end)
     {
         return 1;
     }
+
     else 
     {
-        return ((int)(*left_begin) - (int)(*right_begin));
+        return ((int)(unsigned char)(*left_begin) - (int)(unsigned char)(*right_begin));
     }
 }
 
 int comparator_reverse(const void* left, const void* right)
 {
-    char* left_begin  = (((struct string*)left) ->str) + (((struct string*)left) ->len) - 1;
-    char* left_end    = (((struct string*)left) ->str) - 1;
-    char* right_begin = (((struct string*)right)->str) + (((struct string*)right)->len) - 1;
-    char* right_end   = (((struct string*)right)->str) - 1;
+    char* left_begin  = (((struct string*) left) ->str) + (((struct string*) left) ->len) - 1;
+    char* left_end    = (((struct string*) left) ->str);
+    char* right_begin = (((struct string*) right)->str) + (((struct string*) right)->len) - 1;
+    char* right_end   = (((struct string*) right)->str);
 
     while ((!isalpha(*left_begin))  && (left_begin  != left_end))  --left_begin;
     while ((!isalpha(*right_begin)) && (right_begin != right_end)) --right_begin;
@@ -154,17 +174,20 @@ int comparator_reverse(const void* left, const void* right)
     {
         return 0;
     }
+
     else if (left_begin == left_end)
     {
         return -1;
     }
+
     else if (right_begin == right_end)
     {
         return 1;
     }
+
     else 
     {
-        return ((int)(*left_begin) - (int)(*right_begin));
+        return ((int)(unsigned char)(*left_begin) - (int)(unsigned char)(*right_begin));
     }
 }
 
@@ -200,6 +223,7 @@ void quick_sort(struct string* strings, const long int n_lines, int(*comparator)
     {
         quick_sort(strings, index_right + 1, comparator);
     }
+
     if (index_left < n_lines) 
     {
         quick_sort(&strings[index_left], n_lines - index_left, comparator);
@@ -212,6 +236,7 @@ void free_memory(struct string* lines, char* buffer)
     {
         free(lines);
     }
+    
     if (buffer != NULL)
     {
         free(buffer);
@@ -224,9 +249,9 @@ void bubble_sort(struct string* strings, const long int n_lines, int(*comparator
     {
         for (int index_two = 0; index_two < n_lines - index_one - 1; index_two++)
         {
-            if (comparator(&strings[index_two], &strings[index_two+1]) > 0)
+            if (comparator(&strings[index_two], &strings[index_two + 1]) > 0)
                 {
-                    swap(&strings[index_two], &strings[index_two+1]); 
+                    swap(&strings[index_two], &strings[index_two + 1]); 
                 }
         }
     }
