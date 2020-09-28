@@ -1,15 +1,15 @@
-0
-0
-0.5
--1
-1
--2.5
--5.82843 -0.171573
-No roots
-1
--0.25 0
-0 0.6
-No roots
--1.58114 1.58114
-infinite
-No roots
+Test №1 was comleted correctly
+Test №2 was comleted correctly
+Test №3 was comleted correctly
+Test №4 was comleted correctly
+Test №5 was comleted correctly
+Test №6 was comleted correctly
+Test №7 was comleted correctly
+Test №8 was comleted correctly
+Test №9 was comleted correctly
+Test №10 was comleted correctly
+Test №11 was comleted correctly
+Test №12 was comleted correctly
+Test №13 was comleted correctly
+Test №14 was comleted correctly
+Test №15 was comleted correctly
