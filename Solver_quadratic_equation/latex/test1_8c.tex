@@ -1,0 +1,109 @@
+\hypertarget{test1_8c}{}\doxysection{test1.\+c File Reference}
+\label{test1_8c}\index{test1.c@{test1.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test1_8c_acb4dd689d49ff9440b565604c93d3d98}{is\+\_\+number}} (double value, double number)
+\item 
+int \mbox{\hyperlink{test1_8c_a11b51e3cb1c7402e6e2c8ca93c203f2b}{quadratic\+\_\+equation}} (double a, double b, double c, double $\ast$x\+\_\+1, double $\ast$x\+\_\+2)
+\item 
+void \mbox{\hyperlink{test1_8c_a1e81f0a112976496bebfd8b999331173}{output}} (int roots, double $\ast$x\+\_\+1, double $\ast$x\+\_\+2)
+\item 
+int \mbox{\hyperlink{test1_8c_ae9b06a4e5b4aa1e99fb27bd47b1209ba}{unit\+\_\+test}} ()
+\item 
+int \mbox{\hyperlink{test1_8c_ad3aa5dd958cd4a2b5d14642926888022}{manual\+\_\+test}} ()
+\item 
+int \mbox{\hyperlink{test1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{test1_8c_a0a7a6638bdfab9d8f3d3763bcbd4f2db}\label{test1_8c_a0a7a6638bdfab9d8f3d3763bcbd4f2db}} 
+const double {\bfseries deviation} = 1E-\/6
+\item 
+\mbox{\Hypertarget{test1_8c_acdb9580f8c1b2955aa58958261a6c582}\label{test1_8c_acdb9580f8c1b2955aa58958261a6c582}} 
+const int {\bfseries Z\+E\+RO} = 0
+\item 
+\mbox{\Hypertarget{test1_8c_a7a6e478e2a99121b28c9629bf4711262}\label{test1_8c_a7a6e478e2a99121b28c9629bf4711262}} 
+const int {\bfseries N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+T\+E\+S\+TS} = 15
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test1_8c_acb4dd689d49ff9440b565604c93d3d98}\label{test1_8c_acb4dd689d49ff9440b565604c93d3d98}} 
+\index{test1.c@{test1.c}!is\_number@{is\_number}}
+\index{is\_number@{is\_number}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{is\_number()}{is\_number()}}
+{\footnotesize\ttfamily int is\+\_\+number (\begin{DoxyParamCaption}\item[{double}]{value,  }\item[{double}]{number }\end{DoxyParamCaption})}
+
+Checks whether number is value with an accuracy of 1E-\/6 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em value} & value -\/ the number to compare with original number \\
+\hline
+\mbox{\texttt{ in}}  & {\em number} & number -\/ original number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{test1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{test1.c@{test1.c}!main@{main}}
+\index{main@{main}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{test1_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main()}} \mbox{\Hypertarget{test1_8c_ad3aa5dd958cd4a2b5d14642926888022}\label{test1_8c_ad3aa5dd958cd4a2b5d14642926888022}} 
+\index{test1.c@{test1.c}!manual\_test@{manual\_test}}
+\index{manual\_test@{manual\_test}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{manual\_test()}{manual\_test()}}
+{\footnotesize\ttfamily int manual\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Solves one equation in the terminal \mbox{\Hypertarget{test1_8c_a1e81f0a112976496bebfd8b999331173}\label{test1_8c_a1e81f0a112976496bebfd8b999331173}} 
+\index{test1.c@{test1.c}!output@{output}}
+\index{output@{output}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily void output (\begin{DoxyParamCaption}\item[{int}]{roots,  }\item[{double $\ast$}]{x\+\_\+1,  }\item[{double $\ast$}]{x\+\_\+2 }\end{DoxyParamCaption})}
+
+Print the answer in the terminal 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em roots} & roots -\/ number of roots \\
+\hline
+\mbox{\texttt{ out}}  & {\em x\+\_\+1} & pointer to the first root x1 \\
+\hline
+\mbox{\texttt{ out}}  & {\em x\+\_\+2} & pointer to the second root x2 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{test1_8c_a11b51e3cb1c7402e6e2c8ca93c203f2b}\label{test1_8c_a11b51e3cb1c7402e6e2c8ca93c203f2b}} 
+\index{test1.c@{test1.c}!quadratic\_equation@{quadratic\_equation}}
+\index{quadratic\_equation@{quadratic\_equation}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{quadratic\_equation()}{quadratic\_equation()}}
+{\footnotesize\ttfamily int quadratic\+\_\+equation (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{c,  }\item[{double $\ast$}]{x\+\_\+1,  }\item[{double $\ast$}]{x\+\_\+2 }\end{DoxyParamCaption})}
+
+Solves a square equation ax$^\wedge$2 + bx + c = 0 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em a} & a -\/ coefficient \\
+\hline
+\mbox{\texttt{ in}}  & {\em b} & b -\/ coefficient \\
+\hline
+\mbox{\texttt{ in}}  & {\em c} & c -\/ coefficient \\
+\hline
+\mbox{\texttt{ out}}  & {\em x\+\_\+1} & pointer to the first root x1 \\
+\hline
+\mbox{\texttt{ out}}  & {\em x\+\_\+2} & pointer to the second root x2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of roots 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+In case of infinite number of roots, returns -\/1 
+\end{DoxyNote}
+Special case of quadratic equation
+
+Standard solution of quadratic equation\mbox{\Hypertarget{test1_8c_ae9b06a4e5b4aa1e99fb27bd47b1209ba}\label{test1_8c_ae9b06a4e5b4aa1e99fb27bd47b1209ba}} 
+\index{test1.c@{test1.c}!unit\_test@{unit\_test}}
+\index{unit\_test@{unit\_test}!test1.c@{test1.c}}
+\doxysubsubsection{\texorpdfstring{unit\_test()}{unit\_test()}}
+{\footnotesize\ttfamily int unit\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unit tests input from input.\+txt and output in output.\+txt 
