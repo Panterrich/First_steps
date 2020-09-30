@@ -14,41 +14,43 @@ int main(int argc, const char* argv[])
 {  
     setlocale(LC_ALL, "ru_RU.cp1251");
 
-    FILE* input = fopen(argv[1], "r"); //Открыли файл на чтение
-    assert(input != NULL);
+    FILE* input = fopen(argv[1], "r");
 
-    struct text input_text = create_text(input);
+    if (input == NULL)
+        {
+            printf("File is not found, ERROR");
+            abort();
+        }
 
-    fclose(input);// Закрыли файл
+    struct Text input_text = {};
+    Create_text(input, &input_text);
 
-    qsort(input_text.lines, input_text.n_lines, sizeof(struct string), comparator_direct);  //Отсортировали массив (структуру) по началу
+    fclose(input);
 
-    FILE* output = fopen("Text_sorted.txt", "w");//Открыли файл для записи
+    qsort(input_text.lines, input_text.n_lines, sizeof(struct String), Comparator_direct);
+
+    FILE* output = fopen("Text_sorted.txt", "w");
     assert(output != NULL);
 
     fprintf(output, "Direct sorted text\n\n");
-    print_text(output, input_text.lines, input_text.n_lines);//Напечатили в файл отсортированный массив
-    fclose(output);//Закрыли файл
+    Print_text(output, input_text.lines, input_text.n_lines);
+    fclose(output);
 
-    quick_sort(input_text.lines, input_text.n_lines, comparator_reverse);
-    //qsort(lines, n_lines, sizeof(struct string), comparator_reverse);
-    //bubble_sort(lines, n_lines, comparator_reverse);  //Отсортировали массив с конца
+    Quick_sort(input_text.lines, input_text.n_lines, Comparator_reverse);
+    //qsort(input_text.lines, input_text.n_lines, sizeof(struct String), Comparator_reverse);
+    //bubble_sort(input_text.lines, input_text.n_lines, Comparator_reverse);
 
-    output = fopen("Text_sorted.txt", "a");//Открываем файл для записи
+    output = fopen("Text_sorted.txt", "a");
     assert(output != NULL);
 
-    fprintf(output, "\nReverse sotred text\n\n");
-    print_text(output, input_text.lines, input_text.n_lines);//Напечатали отсортированный массив по концу
-    fclose(output);//Закрыли файл
-
-    output = fopen("Text_sorted.txt", "a");//Открываем файл для записи
-    assert(output != NULL);
+    fprintf(output, "\nReverse sorted text\n\n");
+    Print_text(output, input_text.lines, input_text.n_lines);
 
     fprintf(output, "\nOriginal text\n\n");
-    print_buffer(output, input_text.buffer, input_text.size);//Напечатали массив
-    fclose(output);//Закрыли файл
+    Print_buffer(output, input_text.buffer, input_text.size);
+    fclose(output);
 
-    free_memory(input_text.lines, input_text.buffer); //Освобождение памяти
+    Free_memory(&input_text);
 
     return 0;
 }
