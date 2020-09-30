@@ -17,8 +17,3 @@ Example:
     ./app "Hamlet.txt"
          
 2) Your sorted text is in "Text_sorted.txt"
-
-Onegin_general.c is program without file division
-
-
-         
