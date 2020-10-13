@@ -17,10 +17,10 @@ int main(int argc, const char* argv[])
     FILE* input = fopen(argv[1], "r");
 
     if (input == NULL)
-        {
-            printf("File is not found, ERROR");
-            abort();
-        }
+    {
+        printf("File is not found, ERROR");
+        abort();
+    }
 
     struct Text input_text = {};
     Create_text(input, &input_text);
