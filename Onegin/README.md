@@ -8,7 +8,7 @@ Compile program:
 
 1) In terminal:
 
-        g++ Onegin.cpp main.c -o app
+        g++ Str_lib.cpp Str_sort.cpp main.c -o app
         ./app "Name_of_file"   
   
 Example: 
