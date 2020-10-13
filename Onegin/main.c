@@ -33,7 +33,7 @@ int main(int argc, const char* argv[])
     assert(output != NULL);
 
     fprintf(output, "Direct sorted text\n\n");
-    Print_text(output, input_text.lines, input_text.n_lines);
+    Print_text(output, &input_text);
     fclose(output);
 
     Quick_sort(input_text.lines, input_text.n_lines, Comparator_reverse);
@@ -44,10 +44,10 @@ int main(int argc, const char* argv[])
     assert(output != NULL);
 
     fprintf(output, "\nReverse sorted text\n\n");
-    Print_text(output, input_text.lines, input_text.n_lines);
+    Print_text(output, &input_text);
 
     fprintf(output, "\nOriginal text\n\n");
-    Print_buffer(output, input_text.buffer, input_text.size);
+    Print_buffer(output, &input_text);
     fclose(output);
 
     Free_memory(&input_text);

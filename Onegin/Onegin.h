@@ -1,5 +1,10 @@
 #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <assert.h>
+#include <sys/stat.h>
+#include <ctype.h>
 
 /// \file
 
@@ -72,18 +77,16 @@ int Comparator_reverse(const void* left, const void* right);
 /*!
 Prints text to a file on the sorted pointers to strings
 \param[in] file file - pointer to the output file
-\param[in] strings strings - pointer to array of the string structure
-\param[in] n_lines n_lines - the number of lines
+\param[in] input_text input_text - pointer to the text structure 
 */
-void Print_text(FILE* file, struct String* strings, const size_t n_lines);
+void Print_text(FILE* file, const struct Text* input_text);
 
 /*!
 Prints text to a file from buffer
 \param[in] file file - pointer to the output file
-\param[in] buffer buffer - pointer to the beginning buffer with text characters
-\param[in] size size - size of buffer
+\param[in] input_text input_text - pointer to the text structure 
 */
-void Print_buffer(FILE* file, char* buffer, const size_t size);
+void Print_buffer(FILE* file, const struct Text* input_text);
 
 /*!
 Quick sort for the strings
